@@ -1,5 +1,6 @@
 package com.example.a276ass2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,15 @@ import com.example.Model.LensManager;
 public class AddLens extends AppCompatActivity {
 
     private LensManager lenses = LensManager.getInstance();
+
+//    private static final String ENTRY = "entry";
+//
+//    public static Intent makeLaunchIntent (Context context, int entryValue) {
+//        Intent intent = new Intent (context, AddLens.class);
+//        intent.putExtra(ENTRY, entryValue);
+//
+//        return intent;
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +40,7 @@ public class AddLens extends AppCompatActivity {
 
     private void setUpEditText() {
         // set hint
-        final EditText make = (EditText) findViewById(R.id.AddLens_Make);
+        final EditText make = (EditText) findViewById(R.id.AddLens_make);
         final EditText focalLength = (EditText) findViewById(R.id.AddLens_FocalLength);
         final EditText aperture = (EditText) findViewById(R.id.AddLens_Aperture);
 
@@ -51,9 +61,13 @@ public class AddLens extends AppCompatActivity {
                 lenses.add(new Lens(makeValue, apertureValue, focalLengthValue));
 
                 Intent result = new Intent();
-                result.putExtra("result", "Add New Lens Success");
-
                 setResult(RESULT_OK, result);
+                finish();
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
             }
         });

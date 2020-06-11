@@ -6,6 +6,7 @@ import com.example.Model.Lens;
 import com.example.Model.LensManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -13,14 +14,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private LensManager lenses = LensManager.getInstance();
+
+    private static final int ADD_LENS = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +57,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddLens.class);
-                startActivity(intent);
+//                Intent intent = AddLens.makeLounchIntent(MainActivity.this, 200);
+                startActivityForResult(intent, ADD_LENS);
+
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+                recreate();
     }
 
     private void setUpItemClickListener() {
