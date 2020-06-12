@@ -56,8 +56,9 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // 为什么是200
+//                Intent intent = AddLens.makeLaunchIntent(MainActivity.this, 200);
                 Intent intent = new Intent(MainActivity.this, AddLens.class);
-//                Intent intent = AddLens.makeLounchIntent(MainActivity.this, 200);
                 startActivityForResult(intent, ADD_LENS);
 
             }
@@ -75,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = Calculate.makeLaunchIntent(MainActivity.this, position);
+                startActivity(intent);
             }
         });
     }
