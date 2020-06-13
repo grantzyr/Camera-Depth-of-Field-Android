@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         // set item click
         setUpItemClickListener();
 
-
+        // set empty state
         final TextView emptyHint = (TextView) findViewById(R.id.main_empty_hint);
         if (lenses.size() == 0) {
             emptyHint.setText(R.string.emptyHint);
