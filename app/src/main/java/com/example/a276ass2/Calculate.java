@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.Model.Lens;
 import com.example.Model.LensManager;
@@ -79,25 +80,36 @@ public class Calculate extends AppCompatActivity {
                 TextView farFocalDistance = (TextView) findViewById(R.id.Calculate_FFD);
                 TextView depthOfField = (TextView) findViewById(R.id.Calculate_DOF);
                 TextView hyperFocalDistance = (TextView) findViewById(R.id.Calculate_HFD);
-
-                if (getSA < tmpLens.getMaxAperture()) {
-                    nearFocalDistance.setText("Invalid aperture");
-                    farFocalDistance.setText("Invalid aperture");
-                    depthOfField.setText("Invalid aperture");
-                    hyperFocalDistance.setText("Invalid aperture");
-
+                if (getCOC == 0) {
+                    Toast.makeText(getApplicationContext(), "ERROR: Circle of Confusion <= 0", Toast.LENGTH_SHORT).show();
                 } else {
-                    double hyperFocalValue = getHyperFocal(tmpLens, getSA, getCOC);
-                    double nearFocalValue = getNearFocal(tmpLens, hyperFocalValue, getDTS);
-                    double farFocalValue = getFarFocal(tmpLens, hyperFocalValue, getDTS);
-                    double depthOfFieldValue = getDepthOfField(farFocalValue, nearFocalValue);
+                    if (getDTS == 0) {
+                        Toast.makeText(getApplicationContext(), "ERROR: Distance to subject <= 0", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (getSA < 1.4) {
+                            Toast.makeText(getApplicationContext(), "ERROR: Selected aperture < 1.4", Toast.LENGTH_SHORT).show();
+                        } else {
+                            if (getSA < tmpLens.getMaxAperture()) {
+                                nearFocalDistance.setText("Invalid aperture");
+                                farFocalDistance.setText("Invalid aperture");
+                                depthOfField.setText("Invalid aperture");
+                                hyperFocalDistance.setText("Invalid aperture");
 
+                            } else {
+                                double hyperFocalValue = getHyperFocal(tmpLens, getSA, getCOC);
+                                double nearFocalValue = getNearFocal(tmpLens, hyperFocalValue, getDTS);
+                                double farFocalValue = getFarFocal(tmpLens, hyperFocalValue, getDTS);
+                                double depthOfFieldValue = getDepthOfField(farFocalValue, nearFocalValue);
 
-                    hyperFocalDistance.setText(formatM(hyperFocalValue) + "m");
-                    nearFocalDistance.setText(formatM(nearFocalValue) + "m");
-                    farFocalDistance.setText(formatM(farFocalValue) + "m");
-                    depthOfField.setText(formatM(depthOfFieldValue) + "m");
+                                hyperFocalDistance.setText(formatM(hyperFocalValue) + "m");
+                                nearFocalDistance.setText(formatM(nearFocalValue) + "m");
+                                farFocalDistance.setText(formatM(farFocalValue) + "m");
+                                depthOfField.setText(formatM(depthOfFieldValue) + "m");
+                            }
+                        }
+                    }
                 }
+
             }
         });
     }

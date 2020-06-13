@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.Model.Lens;
 import com.example.Model.LensManager;
@@ -58,11 +59,29 @@ public class AddLens extends AppCompatActivity {
                 int focalLengthValue = Integer.parseInt(focalLength.getText().toString());
                 double apertureValue = Double.parseDouble(aperture.getText().toString());
 
-                lenses.add(new Lens(makeValue, apertureValue, focalLengthValue));
+                if (makeValue.length() == 0) {
+                    Toast.makeText(getApplicationContext(), "ERROR: Make length = 0", Toast.LENGTH_SHORT).show();
+                } else {
 
-                Intent result = new Intent();
-                setResult(RESULT_OK, result);
-                finish();
+                    if (focalLengthValue == 0) {
+                        Toast.makeText(getApplicationContext(), "ERROR: Focal length = 0", Toast.LENGTH_SHORT).show();
+                    } else {
+
+                        if (apertureValue < 1.4) {
+                            Toast.makeText(getApplicationContext(), "ERROR: Aperture < 1.4", Toast.LENGTH_SHORT).show();
+                        } else {
+
+                            lenses.add(new Lens(makeValue, apertureValue, focalLengthValue));
+
+                            Intent result = new Intent();
+                            setResult(RESULT_OK, result);
+                            finish();
+                        }
+                    }
+                }
+
+
+
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
