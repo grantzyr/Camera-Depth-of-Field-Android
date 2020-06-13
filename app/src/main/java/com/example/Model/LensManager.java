@@ -34,6 +34,13 @@ public class LensManager implements Iterable<Lens> {
         lens.add(lenses);
     }
 
+    public void replace (Lens lenses, int index) {
+        lens.set(index, lenses);
+    }
+
+    public void remove (int index) {
+        lens.remove(index);
+    }
 
     @Override
     public Iterator<Lens> iterator() {

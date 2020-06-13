@@ -3,56 +3,63 @@ package com.example.a276ass2;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.Model.Lens;
+import com.example.Model.LensManager;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.Model.Lens;
-import com.example.Model.LensManager;
-
-public class AddLens extends AppCompatActivity {
+public class Edit extends AppCompatActivity {
 
     private LensManager lenses = LensManager.getInstance();
-
-
-    public static Intent makeLaunchIntent (Context context) {
-        Intent intent = new Intent (context, AddLens.class);
+    private static final String INDEX = "index";
+    public static Intent makeLaunchIntent (Context context, int index) {
+        Intent intent = new Intent(context, Edit.class);
+        intent.putExtra(INDEX, index);
         return intent;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_lens);
+        setContentView(R.layout.activity_edit);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // set hint and button
         setUpEditText();
-
 
     }
 
-    private void setUpEditText() {
-        // set hint
-        final EditText make = (EditText) findViewById(R.id.AddLens_make);
-        final EditText focalLength = (EditText) findViewById(R.id.AddLens_FocalLength);
-        final EditText aperture = (EditText) findViewById(R.id.AddLens_Aperture);
 
-        make.setHint("ex: Canon");
-        focalLength.setHint("ex: 200 for 200mm");
-        aperture.setHint("ex: 2.8 for F2.8");
+    private void setUpEditText() {
+        // set value
+        final EditText make = (EditText) findViewById(R.id.Edit_MakeValue);
+        final EditText focalLength = (EditText) findViewById(R.id.Edit_FLValue);
+        final EditText aperture = (EditText) findViewById(R.id.Edit_ApertureValue);
+
+        int lensIndex = getIntent().getIntExtra(INDEX, 0);
+        final Lens tmpLens = lenses.getLens(lensIndex);
+
+        make.setText(tmpLens.getTheMake());
+        focalLength.setText(Integer.toString(tmpLens.getFocalLens()));
+        aperture.setText(Double.toString(tmpLens.getMaxAperture()));
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_lens, menu);
+        getMenuInflater().inflate(R.menu.menu_edit, menu);
         return true;
     }
 
@@ -63,10 +70,11 @@ public class AddLens extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.action_save) {
-            final EditText make = (EditText) findViewById(R.id.AddLens_make);
-            final EditText focalLength = (EditText) findViewById(R.id.AddLens_FocalLength);
-            final EditText aperture = (EditText) findViewById(R.id.AddLens_Aperture);
+        int lensIndex = getIntent().getIntExtra(INDEX, 0);
+        if (id == R.id.action_edit_save) {
+            final EditText make = (EditText) findViewById(R.id.Edit_MakeValue);
+            final EditText focalLength = (EditText) findViewById(R.id.Edit_FLValue);
+            final EditText aperture = (EditText) findViewById(R.id.Edit_ApertureValue);
 
             String makeValue = make.getText().toString();
             int focalLengthValue = Integer.parseInt(focalLength.getText().toString());
@@ -83,8 +91,8 @@ public class AddLens extends AppCompatActivity {
                     if (apertureValue < 1.4) {
                         Toast.makeText(getApplicationContext(), "ERROR: Aperture < 1.4", Toast.LENGTH_SHORT).show();
                     } else {
-
-                        lenses.add(new Lens(makeValue, apertureValue, focalLengthValue));
+                        Lens tmp = new Lens(makeValue, apertureValue, focalLengthValue);
+                        lenses.replace(tmp, lensIndex);
 
                         Intent result = new Intent();
                         setResult(RESULT_OK, result);
@@ -94,12 +102,11 @@ public class AddLens extends AppCompatActivity {
             }
             return true;
 
-        } else if (id == R.id.action_add_lens_back){
+        } else if (id == R.id.action_edit_cancel){
             finish();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 }

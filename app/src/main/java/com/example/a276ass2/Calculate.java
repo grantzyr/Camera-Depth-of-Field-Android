@@ -33,7 +33,6 @@ public class Calculate extends AppCompatActivity {
     public static Intent makeLaunchIntent (Context context, int index) {
         Intent intent = new Intent(context, Calculate.class);
         intent.putExtra(INDEX, index);
-
         return intent;
     }
 
@@ -66,7 +65,33 @@ public class Calculate extends AppCompatActivity {
         DTS.setHint("ex: 1.5 for 1.5m");
         SA.setHint("ex: 2.8 for F2.8");
 
+
+
         final Button calculate = (Button) findViewById(R.id.Calculate_CalButton);
+        final Button edit = (Button) findViewById(R.id.Calculate_Edit);
+        final Button delete = (Button) findViewById(R.id.Calculate_delete);
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int lensIndex = getIntent().getIntExtra(INDEX, 0);
+                lenses.remove(lensIndex);
+                Intent result = new Intent();
+                setResult(RESULT_OK, result);
+                finish();
+            }
+        });
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int lensIndex = getIntent().getIntExtra(INDEX, 0);
+                Intent intent = Edit.makeLaunchIntent(Calculate.this, lensIndex);
+//                Intent intent = new Intent(Calculate.this, Edit.class);
+                startActivity(intent);
+            }
+        });
+
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,7 +185,9 @@ public class Calculate extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.action_calculate_cancel) {
+        if (id == R.id.action_calculate_back) {
+            Intent result = new Intent();
+            setResult(RESULT_OK, result);
             finish();
             return true;
         }

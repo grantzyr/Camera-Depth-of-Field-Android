@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.a276ass2.AddLens">
     <item
-        android:id="@+id/action_save"
+        android:id="@+id/action_edit_save"
         android:orderInCategory="100"
-        android:title="@string/save1"
+        android:title="@string/save5"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_add_lens_back"
+        android:id="@+id/action_edit_cancel"
         android:orderInCategory="100"
-        android:title="@string/back4"
+        android:title="@string/back3"
         app:showAsAction="never" />
 
 </menu>

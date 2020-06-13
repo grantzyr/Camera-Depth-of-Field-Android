@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = Calculate.makeLaunchIntent(MainActivity.this, position);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
     }
@@ -97,11 +97,12 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
        if (id == R.id.action_add_Lens) {
-            Intent intent = new Intent(MainActivity.this, AddLens.class);
-            startActivityForResult(intent, ADD_LENS);
+           Intent intent = AddLens.makeLaunchIntent(MainActivity.this);
+           startActivityForResult(intent, ADD_LENS);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 }
