@@ -11,4 +11,27 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_add_lens">Lens Details</string>
     <string name="title_activity_calculate">Calculate DoF</string>
+    <string name="near_focal_distance">Near Focal Distance</string>
+    <string name="far_focal_distance">Far Focal Distance</string>
+    <string name="depth_of_field">Depth of Field</string>
+    <string name="hyperfocal_distance">Hyperfocal Distance</string>
+    <string name="circle_of_confusion_m">Circle of Confusion [m]</string>
+    <string name="distance_to_subject_m">Distance to subject [m]</string>
+    <string name="selected_aperture">Selected aperture</string>
+    <string name="photo_details_with">Photo details with</string>
+    <string name="calculate">CALCULATE</string>
+    <string name="make">Make</string>
+    <string name="aperture">Aperture</string>
+    <string name="focal_length_mm">Focal Length [mm]</string>
+    <string name="save">SAVE</string>
+    <string name="cancel">CANCEL</string>
+    <string name="select_a_lens_to_use">Select a lens to use:</string>
+    <string name="enter_all_values1">Enter all values</string>
+    <string name="enter_all_values2">Enter all values</string>
+    <string name="enter_all_values3">Enter all values</string>
+    <string name="enter_all_values4">Enter all values</string>
+    <string name="add_new_lens">Add New Lens</string>
+    <string name="cancel1">CANCEL</string>
+    <string name="save1">SAVE</string>
+    <string name="cancel2">CANCEL</string>
 </resources>

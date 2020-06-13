@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginTop="24dp"
-        android:text="Enter all values"
+        android:text="@string/enter_all_values3"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginTop="124dp"
-        android:text="Enter all values"
+        android:text="@string/enter_all_values4"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="235dp"
-        android:text="Near Focal Distance"
+        android:text="@string/near_focal_distance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="235dp"
-        android:text="Far Focal Distance"
+        android:text="@string/far_focal_distance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="90dp"
         android:layout_marginEnd="235dp"
-        android:text="Depth of Field"
+        android:text="@string/depth_of_field"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="124dp"
         android:layout_marginEnd="235dp"
-        android:text="Hyperfocal Distance"
+        android:text="@string/hyperfocal_distance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="245dp"
         android:layout_marginEnd="235dp"
-        android:text="Circle of Confusion [m]"
+        android:text="@string/circle_of_confusion_m"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="295dp"
         android:layout_marginEnd="235dp"
-        android:text="Distance to subject [m]"
+        android:text="@string/distance_to_subject_m"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="345dp"
         android:layout_marginEnd="235dp"
-        android:text="Selected aperture"
+        android:text="@string/selected_aperture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -104,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="195dp"
         android:layout_marginEnd="235dp"
-        android:text="Photo details with"
+        android:text="@string/photo_details_with"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,7 +149,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginTop="56dp"
-        android:text="Enter all values"
+        android:text="@string/enter_all_values1"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="parent" />
@@ -160,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
         android:layout_marginTop="90dp"
-        android:text="Enter all values"
+        android:text="@string/enter_all_values2"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="parent" />
@@ -191,7 +191,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="296dp"
         android:layout_marginTop="401dp"
-        android:text="CALCULATE"
+        android:text="@string/calculate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
