@@ -48,4 +48,5 @@
     <string name="back">BACK</string>
     <string name="back3">BACK</string>
     <string name="back4">BACK</string>
+    <string name="emptyHint">Click the \"+\" Button to Create a New Lens!</string>
 </resources>

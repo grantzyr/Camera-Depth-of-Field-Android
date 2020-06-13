@@ -15,7 +15,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -40,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
         // set item click
         setUpItemClickListener();
+
+
+        final TextView emptyHint = (TextView) findViewById(R.id.main_empty_hint);
+        if (lenses.size() == 0) {
+            emptyHint.setText(R.string.emptyHint);
+        } else {
+            emptyHint.setText("");
+        }
     }
 
     private void setUpListView() {
