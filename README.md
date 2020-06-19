@@ -33,21 +33,34 @@ Ass on CMPT276 at SFU
 
 - ViewText & EditText
 
-    - // todo
+    - In this page will display the selected lens's description. 
+    - Allow users to enter Caamera's circle of confusion, distance to subject(in meters) and selected aperture(the F number).
+    - Allow only non-negative decimal value
+    - Pre-populate the circle of confusion with 0.029
+    
+        ![image](image/Calculate.jpg)
 
 - Calculate Button
 
-    - // todo
+    - Use button to calculate and dispaly the four depth of field value
+    
+        ![image](image/calculateButton.jpg)
 
 ### Make Improvements to the App
 
 - App Bar Buttons Via Toolbar
 
-    - // todo
+    - Use the Toolbar widget to give all activities an app bar (also called the action bar) at the top of the activities to give at least the following buttons:
+      - Add Lens activity and Edit have Back and Save.
+      - Calculate activity have Back.
+        
+        ![image](image/actionBar.jpg)
 
 - Edit and Delete Lens
-    - // todo
-  
+
+    - There have one more page support editing and removing a lens stored in the list of lenses.
+        ![image](image/editDelete.jpg)
+
 - Error Check Input 
     - // todo
 
